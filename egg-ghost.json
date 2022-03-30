@@ -15,7 +15,7 @@
     },
     "scripts": {
         "installation": {
-            "script": "apk --no-cache add git\r\ncd \/mnt\/server\/\r\ngit clone https:\/\/github.com\/fizzrepo\/pterodactyl-ghost .\/temp\r\nchmod +x .\/temp\/install.sh\r\n\r\n.\/temp\/install.sh\r\n\r\nrm -rf .\/temp",
+            "script": "apk --no-cache add git\r\ncd \/mnt\/server\/\r\ngit clone https:\/\/github.com\/fizzrepo\/pterodactyl-ghost .\/temp\r\nchmod +x .\/temp\/install.sh\r\n\r\n.\/temp\/install.sh {{DB_HOST}} {{DB_USERNAME}} {{DB_PASSWORD}} {{DB_NAME}}\r\n\r\nrm -rf .\/temp",
             "container": "alpine:latest",
             "entrypoint": "ash"
         }
@@ -52,10 +52,19 @@
             "name": "Database Password",
             "description": "The password for the username.",
             "env_variable": "DB_PASSWORD",
-            "default_value": "",
+            "default_value": "securepassword",
             "user_viewable": 1,
             "user_editable": 1,
             "rules": "present"
         },
+        {
+            "name": "Database Name",
+            "description": "The name of the database thingy you're writing to",
+            "env_variable": "DB_NAME",
+            "default_value": "ghost",
+            "user_viewable": 1,
+            "user_editable": 1,
+            "rules": "present"
+        }
     ]
 }
