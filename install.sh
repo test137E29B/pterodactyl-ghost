@@ -28,7 +28,10 @@ chown -R nobody: /home/container/
 chmod -R u+w /home/container/
 
 # Some arguments passed to the install script
-# $1 is 
+# $1 is DB host
+# $2 is DB user
+# $3 is DB password
+# $4 is the DB name
 
 # This is the command that installs ghost headlessly
 # https://ghost.org/docs/ghost-cli/#ghost-install - Please refer to this for some info. I'll try to explain the args.
@@ -37,7 +40,7 @@ chmod -R u+w /home/container/
 # --no-prompt Install without prompting (disable setup, or pass all required parameters as arguments)
 
 # Here are the ones that I'm adding for production installs
-su -s /bin/ash "nobody" -c "ghost install --no-start --no-enable --no-prompt --dir /home/container/ghost --db MySQL --dbhost localhost"
+su -s /bin/ash "nobody" -c "ghost install --no-start --no-enable --no-prompt --dir /home/container/ghost --db MySQL --dbhost $1 --dbuser $2 --dbpass $3 --dbname $4"
 unlink /.ghost
 
 
