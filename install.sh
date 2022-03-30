@@ -26,8 +26,21 @@ chmod -R u+w /.cache/yarn/
 mkdir -p /home/container
 chown -R nobody: /home/container/
 chmod -R u+w /home/container/
-su -s /bin/ash "nobody" -c "ghost install local --no-start --no-enable --no-prompt --dir /home/container/ghost --process local"
+
+# Some arguments passed to the install script
+# $1 is 
+
+# This is the command that installs ghost headlessly
+# https://ghost.org/docs/ghost-cli/#ghost-install - Please refer to this for some info. I'll try to explain the args.
+# --no-start prevents ghost from starting automatically after installation
+# --no-enable Tells the process manager not to restart Ghost on server reboot
+# --no-prompt Install without prompting (disable setup, or pass all required parameters as arguments)
+
+# Here are the ones that I'm adding for production installs
+su -s /bin/ash "nobody" -c "ghost install --no-start --no-enable --no-prompt --dir /home/container/ghost --db MySQL --dbhost localhost"
 unlink /.ghost
+
+
 
 mv /home/container/ghost /mnt/server
 
