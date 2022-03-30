@@ -29,6 +29,33 @@
             "user_viewable": 1,
             "user_editable": 1,
             "rules": "present"
-        }
+        },
+        {
+            "name": "Database Host",
+            "description": "The database host (MySQL or MariaDB)",
+            "env_variable": "DB_HOST",
+            "default_value": "127.0.0.1:3306",
+            "user_viewable": 1,
+            "user_editable": 1,
+            "rules": "present"
+        },
+        {
+            "name": "Database Username",
+            "description": "The username to login to the database (Must have permissions)",
+            "env_variable": "DB_USERNAME",
+            "default_value": "root",
+            "user_viewable": 1,
+            "user_editable": 1,
+            "rules": "present"
+        },
+        {
+            "name": "Database Password",
+            "description": "The password for the username.",
+            "env_variable": "DB_PASSWORD",
+            "default_value": "",
+            "user_viewable": 1,
+            "user_editable": 1,
+            "rules": "present"
+        },
     ]
 }
